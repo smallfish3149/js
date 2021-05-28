@@ -12,3 +12,23 @@
 8.IDEA集成GitHub
 9.国内代码托管中心码云
 10.自建代码托管平台-GitLab
+
+Git:
+	git add
+	git commit -m "xxx"
+	git reflog
+	git log
+	git reset --hard 版本号
+
+Branch
+	git branch 分支名	创建分支
+	git branch -v 		查看分支
+	git checkout 分支名	切换分支
+	git merge 分支名	把指定分支合并到当前分支上
+remote
+	git remote -v 		查看当前别名
+	git remote add Git https://github.com/smallfish3149/Git.git	创建别名
+	git push 别名 分支	推送本地分支到远程库
+	git pull 别名 分支	拉取远程库
+	git clone 链接地址	克隆到本地(公共库不需要登录)
+				拉取代码，初始化本地仓库，创建别名
