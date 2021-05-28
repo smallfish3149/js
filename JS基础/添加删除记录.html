@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style type="text/css">
+    #tab {
+      border: 1px solid black;
+      /* align-items: center; */
+      width: 50%;
+      border-spacing: 0px;
+    }
+    #tab tr {
+      border: 1px solid black;
+    }
+    #tab th {
+      border: 1px solid black;
+    }
+    #tab td {
+      border: 1px solid black;
+      text-align: center;
+    }
+    div{
+        text-align: center;
+    }
+  </style>
+  <script>
+    var del =  function(){
+                     var tr =this.parentNode.parentNode;
+                     var str = "确定要删除"+tr.getElementsByTagName("td")[0].innerHTML+"吗？";
+                     var flag = confirm(str);
+                     if(flag) tr.parentNode.removeChild(tr);
+                return false;
+                }
+            
+    
+      window.onload = function(){
+          var myclick = function(str,fun){
+              var btn =document.getElementById(str);
+              btn.onclick=fun;
+          };
+
+            var a = document.getElementsByTagName("a");
+            for(var i=0;i<a.length;i++){
+                a[i].onclick = del;
+            }
+            var submit = document.getElementById("submit");
+            submit.onclick = function(){
+              var name = document.getElementById("name").value;
+              var email = document.getElementById("email").value;
+              var salary = document.getElementById("salary").value;
+              //alert(name);
+              var tr = document.createElement("tr");
+              tr.innerHTML = "<td>"+name+"</td>"+
+                                             "<td>"+email+"</td>"+
+                                             "<td>"+salary+"</td>"+
+                                             "<td><a href='javascript:;'>Delete</a></td>";
+
+                  var tbody = document.getElementsByTagName("tbody")[0];
+                  tbody.appendChild(tr);
+                  var a = tr.getElementsByTagName("a")[0];
+                  a.onclick = del;
+
+            }
+           /*  submit.onclick = function(){
+              var attribu = [];
+                attribu[0] ="name";
+                attribu[1] = "email";
+                attribu[2] = "salary";
+                attribu[3] = "a";
+                var td =[];
+                var node =[];
+                for(var i = 0; i<attribu.length;i++){
+                  if(i<3){
+                    var input = document.getElementById(attribu[i]);
+                        node[i] = document.createTextNode(input.value);
+                        td[i] = document.createElement("td");
+                        td[i].appendChild(node[i]);
+                }else {
+                        var a = document.createElement(attribu[i]);
+                        //a.innerText = "Delete";
+                        node[i] = document.createTextNode("Delete");
+                        a.appendChild(node[i]);
+                        a.href = "javascript:;";
+                        td[i] = document.createElement("td");
+                        td[i].appendChild(a);
+                      }
+                }
+                var tr = document.createElement("tr");
+                for(var i = 0;i<node.length;i++){
+                  tr.appendChild(node[i]);
+                }
+                var tab =document.getElementById("tab");
+                tab.appendChild(tr);
+            } */
+
+
+      };
+
+  </script>
+
+  <body>
+    <table id="tab" align="center">
+      <tr >
+        <th>Name</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>&ensp;</th>
+      </tr>
+
+      <tr>
+        <td>shangsan</td>
+        <td>110@163.com</td>
+        <td>5w</td>
+        <td><a href="JavaScript:;" id="a1">Delete</a></td>
+      </tr>
+
+      <tr>
+        <td>lisi</td>
+        <td>110@163.com</td>
+        <td>5w</td>
+        <td><a href="" id="a2">Delete</a></td>
+      </tr>
+
+      <tr>
+        <td>wangwu</td>
+        <td>110@163.com</td>
+        <td>5w</td>
+        <td><a href="" id="a3">Delete</a></td>
+      </tr>
+    </table>
+
+    <table align="center" border="0">
+        <div align="center">  <h3 >添加新员工</h3></div>
+        <tr>
+            <td>name:</td>
+            <td border=0px><input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="请输入员工姓名"
+              /></td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="请输入员工邮箱"
+              /></td>
+        </tr>
+        <tr>
+            <td>salary:</td>
+            <td><input
+                type="text"
+                name="salary"
+                id="salary"
+                placeholder="请输入员工薪水"
+              /></td>
+        </tr>
+        <tr>
+            <td colspan="2" align = "center"> <button id="submit" value="abc">submit</button></td>
+        </tr>
+    </table>
+  </body>
+</html>

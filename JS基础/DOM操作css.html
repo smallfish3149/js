@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+</style>
+<script>
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            var box = document.getElementById("box");
+            btn.onclick = function(){
+                box.style.width = "400px";
+                box.style.backgroundColor = "blue";
+                var obj = getComputedStyle(box,null);
+               alert(getStyle(box,"width")) ;
+            }
+        }
+        function getStyle(obj,name){
+            if(window.getComputedStyle){
+                //正常浏览器
+                return getComputedStyle(obj,null)[name];
+            }else return obj.currentStyle[name];    //IE浏览器
+            //return window.getComputedStyle?getComputedStyle(obj,null)[name]:return obj.currentStyle[name]; 
+            
+        }
+</script>
+<body>
+    <div id="box" align = "center">
+    </div>
+    <button id="btn">确定</button>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function(){
+        var btn = document.getElementById("btn");
+        var bind = function(obj,eventStr,callback){
+            if(obj.addEventListener){
+                obj.addEventListener(eventStr,callback,false);
+            }else{
+                obj.attachEvent("on"+eventStr,function(){
+                    callback.call(obj);
+                })
+            }
+        }
+        bind(btn,"click",function(){
+            alert("1");
+        })
+    }
+</script>
+<body>
+    <button id="btn">确定</button>
+</body>
+</html>

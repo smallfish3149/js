@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function (){
+        var arr = ['img/photo_2021-04-01_22-42-43.jpg','img/photo_2021-04-07_15-38-23.jpg',
+        'img/photo_2021-04-07_15-39-18.jpg','img/photo_2021-04-07_15-39-26.jpg',
+        'img/photo_2021-04-07_15-39-37.jpg',
+        'img/photo_2021-04-07_15-39-42.jpg'];
+        var i =1;
+        var img = document.getElementById("img1");
+        var btn01 = document.getElementById("btn01");
+        var btn02 = document.getElementById("btn02");
+        var timer;
+        btn01.onclick= function(){
+            //避免开启多个定时器，当前元素开启一个定时器之前先关闭上一个定时器
+            clearInterval(timer);
+            timer = setInterval(function(){
+            img.src = arr[i++];
+            if(i==arr.length) i=0;      //i= i%arr.length       i %= arr.length
+        },1000)
+        }
+        btn02.onclick = function(){
+            clearInterval(timer);
+        }
+    }
+</script>
+<body>
+    <img src="img/photo_2021-04-01_22-42-43.jpg" alt="" id="img1"> 
+    <br>
+    <button id="btn01">开始</button><button id="btn02">停止</button>
+</body>
+</html>

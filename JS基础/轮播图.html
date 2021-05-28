@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+      /* 消除默认样式 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 设置outer的样式 */
+        #outer{
+            /* 设置宽度高度 */
+            width: 1100px;
+            height: 1440px;
+            /* 设置居中 */
+            margin: 50px auto;
+            /* 设置背景颜色 */
+            background-color: aqua;
+            /* 设置padding */
+            padding: 10px 0;
+            /* 开启相对定位 */
+            position: relative;
+            /* 裁剪溢出内容 */
+            overflow: hidden;
+        }
+        /* 设置imgList */
+        #imgList{
+            list-style: none;
+            /* 设置ul的宽度 */
+            width: 5500px;
+            /* 给ul开启觉得定位 */
+            position: absolute;
+            /* 设置偏移量 ，每次移动1100px就会显示下一张图片*/
+            left: 0px;
+        }
+        /* 设置图片中的li */
+            #imgList li{
+                /* 设置浮动 */
+                float: left;
+                /* 设置左右外边距 */
+                margin: 0 10px;
+            }
+            #navDiv{
+                position: absolute;
+                bottom: 20px;
+                /* 设置left的值
+                outer宽度：1100px
+                navdiv宽度：25*5=125px
+                1100-125=970
+                970/2=487
+                 */
+                 left: 487px;
+
+            }
+            #navDiv a{
+                /* 设置超链接浮动 */
+                float: left;
+                /* 设置超链接宽高 */
+                width: 15px;
+                height: 15px;
+                /* 设置背景颜色 */
+                background-color: red;
+                /* 设置左右外边距 */
+                margin: 0 5px;
+                /* 设置半透明 */
+                opacity: 0.5;
+            }
+            #navDiv a:hover{
+                background-color: black;
+            }
+  </style>
+  <script src="tool.js"></script>
+  <script>
+      window.onload = function(){
+          var imgList = document.getElementById("imgList");
+          var imgArr = document.getElementsByTagName("img");
+          imgList.style.width = 1100*imgArr.length+"px";
+
+          var a_Arr = document.getElementsByTagName("a");
+          var navDiv = document.getElementById("navDiv");
+          var outer = document.getElementById("outer");
+          navDiv.style.left = (outer.offsetWidth-navDiv.offsetWidth)/2+"px";
+
+          /* 设置默认图片显示索引 */
+          var index =0;
+          //imgList.style.left = 0;
+          a_Arr[index].style.backgroundColor = "black";
+
+/*           function setA(){
+            if(index !=0) a_Arr[0].style.backgroundColor = ""; 
+            a_Arr[index].style.backgroundColor = "";
+          } */
+
+          function setA(){
+        if(index >=imgArr.length){
+          index = 0;
+          imgList.style.left = 0;
+        }
+        for(var i = 0; i<a_Arr.length;i++){
+          a_Arr[i].style.backgroundColor = "";
+        }
+        a_Arr[index].style.backgroundColor = "black";
+      }
+
+        /* 实现功能 */
+        for(var i = 0;i<a_Arr.length;i++){
+            a_Arr[i].num = i;
+            a_Arr[i].onclick = function(){
+                //if(index !=0) a_Arr[0].style.backgroundColor = "";      //内联样式为空，就会到样式表去找。内联样式优先级高，如果使用内敛样式就会使hover失效
+                //a_Arr[index].style.backgroundColor = "";
+                index = this.num;
+                //a_Arr[index].style.backgroundColor = "black";
+                //imgList.style.left = -outer.offsetWidth*(index)+"px";
+                move(imgList,"left",-outer.offsetWidth*index,20,function(){
+                  setA();
+                });
+ 
+        }
+
+      }
+
+
+
+      function autoMove(){
+        setInterval(function(){
+          //a_Arr[index].style.backgroundColor = "";
+        index++;
+        //alert(index);
+        index %=imgArr.length;
+         //a_Arr[index].style.backgroundColor = "black";
+        move(imgList,"left",-outer.offsetWidth*index,20,function(){
+          setA();
+          
+        });
+        //index++;
+      },3000)
+      }
+
+      autoMove();
+
+
+    }
+
+  </script>
+  <body>
+    <!-- 创建一个外部的div作为大的容器 -->
+    <div id="outer">
+      <!-- 创建一个ul，用于放置图片 -->
+      <ul id="imgList">
+        <li> <img src="./img/1.jpg" alt="萨摩耶" /></li>
+        <li> <img src="./img/2.jpg" alt="萨摩耶" /></li>
+        <li> <img src="./img/3.jpg" alt="萨摩耶" /></li>
+        <li> <img src="./img/4.jpg" alt="萨摩耶" /></li>
+        <li> <img src="./img/5.jpg" alt="萨摩耶" /></li>
+        
+      </ul>
+      <div id="navDiv">
+          <a href="javascript:;"></a>
+          <a href="javascript:;"></a>
+          <a href="javascript:;"></a>
+          <a href="javascript:;"></a>
+          <a href="javascript:;"></a>
+      </div>
+    </div>
+  </body>
+</html>

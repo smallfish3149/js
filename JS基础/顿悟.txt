@@ -1,0 +1,50 @@
+1.    //反选
+    myclick("checkedRevBtn",function(){
+        var input = document.getElementsByName("items");
+        input.forEach(function(value,index,obj){
+            if(value.checked=="checked"){   //问题所在
+                value.checked=0;
+            }else value.checked ="checked";
+        })
+    })
+
+        //反选
+    myclick("checkedRevBtn",function(){
+        var input = document.getElementsByName("items");
+        input.forEach(function(value,index,obj){
+            /*             if(value.checked) value.checked=0;
+            else value.checked ="checked"; */
+            value.checked = !value.checked;
+        })
+    })
+
+2.a在不同位置
+//var a =0;
+for(var i = 0;i<input.length;i++){
+    //var a =0;
+    input[i].onclick= function(){
+        var a =0;
+        input.forEach(function(value,index,obj){
+                if(value.checked)  a++;
+               //console.log(value.checked);
+            })
+            console.log(a);
+            if(a==input.length) checkallbox.checked = 1;
+            else checkallbox.checked = 0;
+    
+    };
+}
+3.getElementById is not defined      缺少document.
+            #navDiv a{
+                /* 设置超链接浮动 */
+                position: absolute;
+                /* 设置超链接宽高 */
+                width: 15px;
+                height: 15px;
+                /* 设置背景颜色 */
+                background-color: red;
+                /* 设置左右外边距 */
+                margin: 0 5px;
+                /* 设置半透明 */
+                opacity: 0.5;
+            }

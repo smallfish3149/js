@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #pic{
+                width: 30%;
+                height: 30%;
+        }
+    #outer{
+        width: 1079px;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+<script>
+    window.onload = function(){
+        var arr = ['img/photo_2021-04-01_22-42-43.jpg','img/photo_2021-04-07_15-38-23.jpg',
+        'img/photo_2021-04-07_15-39-18.jpg','img/photo_2021-04-07_15-39-26.jpg',
+        'img/photo_2021-04-07_15-39-37.jpg',
+        'img/photo_2021-04-07_15-39-42.jpg'];
+        var index = 0;
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        var p = document.getElementById("p");
+
+        p.innerHTML = "一共"+arr.length+"张照片，"+"现在是第"+(index+1)+"张！";
+
+        var img = document.getElementsByTagName("img")[0];
+        prev.onclick = function (){
+            index--;
+            if (index<0) index=arr.length-1;
+            
+            img.src=arr[index];
+            p.innerHTML = "一共6张照片，现在是第"+(index+1)+"张！"
+        }
+        next.onclick = function (){
+            index++;
+            if(index>arr.length-1) index=0;
+           // var img = document.getElementsByTagName("img")[0];
+            img.src=arr[index];
+            p.innerHTML = "一共6张照片，现在是第"+(index+1)+"张！"
+        }
+
+        var div = document.querySelector(".box div");
+        console.log(div.innerHTML);
+
+    }
+
+</script>
+<body>
+    <div id="outer">
+        <p id="p"></p>
+            <img  id="pic" src="/home/smallfish/Pictures/photo_2021-04-01_22-42-43.jpg" alt="01" >
+            <br>
+            <button id="prev">上一张</button>
+            <button id="next">下一张</button>
+    </div>
+    <div class="box">
+        <div>jjjjj</div>
+    </div>
+</body>
+</html>

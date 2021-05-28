@@ -1,0 +1,121 @@
+jQuery：
+        一个优秀的js函数库
+    jQuery核心函数：$/jQuery
+    jQuery核心对象：执行jQuery函数返回的对象
+
+    jQuery函数使用：
+            1.作为函数，当DOM加载完成之后，执行此回调函数
+            2.参数最为选择器字符串：查找所以适配的标签
+            3.参数为DOM对象，将dom封装成jQuery对象
+            4.参数作为标签字符串，封装标签对象为jQuery对象
+    jQuery对象使用：
+            1.执行jQuery核心函数返回的对象
+            2.jQuery对象内部包含的是dom元素对象的伪数组
+            3.jQuery对象拥有很多有用的属性和方法，能方便操作dom
+            属性/方法：
+                        基本行为：
+                                            1.size()/length                         内部包含dom元素的个数
+                                            2.[index]/get(index)                
+                                            3.each()
+                                            4.index()
+                        属性：
+伪数组：
+                Object对象
+                length属性数值下标属性
+                没有数组特别方法
+
+基本选择器：
+                                        /*
+                        需求:
+                        1. 选择id为div1的元素
+                        2. 选择所有的div元素
+                        3. 选择所有class属性为box的元素
+                        4. 选择所有的div和span元素
+                        5. 选择所有class属性为box的div元素
+                        */
+                        //$('#div1').css("background","yellow")
+                        //$('div').css("background","yellow")
+                        //$('.box').css("background","yellow")
+                        //$('div,span').css("background","yellow")
+                        //$('div.box').css("background","yellow")
+
+层次选择器: 查找子元素, 后代元素, 兄弟元素的选择器
+                1. ancestor descendant
+                在给定的祖先元素下匹配所有的后代元素
+                2. parent>child
+                在给定的父元素下匹配所有的子元素
+                3. prev+next
+                匹配所有紧接在 prev 元素后的 next 元素
+                4. prev~siblings
+                匹配 prev 元素之后的所有 siblings 元素
+过滤选择器：
+                                1. 选择第一个div
+                                $('div:first').css('background', 'red')
+
+                                2. 选择最后一个class为box的元素
+                                $('.box:last').css('background', 'red')
+
+                                3. 选择所有class属性不为box的div
+                                $('div:not(.box)').css('background', 'red')  //没有class属性也可以
+
+                                4. 选择第二个和第三个li元素
+                                $('li:gt(0):lt(2)').css('background', 'red') // 多个过滤选择器不是同时执行, 而是依次
+                                $('li:lt(3):gt(0)').css('background', 'red')
+
+                                5. 选择内容为BBBBB的li
+                                $('li:contains("BBBBB")').css('background', 'red')
+
+                                6. 选择隐藏的li
+                                console.log($('li:hidden').length, $('li:hidden')[0])
+
+                                7. 选择有title属性的li元素
+                                $('li[title]').css('background', 'red')
+
+                                8. 选择所有属性title为hello的li元素
+                                $('li[title="hello"]').css('background', 'red')
+
+表单选择器：
+
+                          // 1. 选择不可用的文本输入框
+                                $(':text:disabled').css("background","yellow")
+                                // 2. 显示选择爱好 的个数
+                                console.log($(':checkbox:checked').length)
+                                // 3. 显示选择的城市名称
+
+                                $(':submit').click(function (){
+                                console.log($('select>option:selected').html()) // 选择的option的标签体文本
+
+                                console.log($('select').val())  // 选择的option的value属性值
+                                })
+
+工具方法：
+
+jQuery属性：
+                                                // 1. 读取第一个div的title属性
+                                                //console.log($('div:first').attr("title"))
+                                                // 2. 给所有的div设置name属性(value为atguigu)
+                                                //$('div').attr("name","smallfish")
+                                                // 3. 移除所有div的title属性
+                                                //$('div').remove("title")
+                                                // 4. 给所有的div设置class='guiguClass'
+                                                //$('div').attr("class","smallfish")
+                                                // 5. 给所有的div添加class='abc'
+                                                //$('div').addClass("abc")
+                                                // 6. 移除所有div的guiguClass的class
+                                                //$('div').removeClass("smallfish")
+                                                // 7. 得到最后一个li的标签体文本
+                                                //console.log($('li:last').html())
+                                                // 8. 设置第一个li的标签体为"<h1>mmmmmmmmm</h1>"
+                                                //$('li:first').html("<h1>mmmmmmmmm</h1>")
+                                                // 9. 得到输入框中的value值
+                                                //console.log($(':text').val())
+                                                // 10. 将输入框的值设置为atguigu
+                                                //$(':text').val("smallfish")
+                                                // 11. 点击'全选'按钮实现全选
+                                                $('button:first').click(function (){
+                                                $(':checkbox').prop("checked",true)
+                                                })
+                                                // 12. 点击'全不选'按钮实现全不选
+                                                $('button:last').click(function (){
+                                                $(':checkbox').prop("checked",false)
+                                                })

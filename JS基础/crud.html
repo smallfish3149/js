@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload= function(){
+        var myclick = function(str,fun){
+                var btn = document.getElementById(str);
+                btn.onclick = fun;
+        }
+
+        var city =document.getElementById("city");
+
+        //创建一个广州节点，加到#city下
+        myclick("btn01",function(){
+            var node =document.createTextNode("广州");
+            var para = document.createElement("li");
+            para.appendChild(node);
+            city.appendChild(para);
+        });
+
+        //将广州节点插入#bj前面
+        myclick("btn02",function(){
+            var bj = document.getElementById("bj");
+            var gzText =document.createTextNode("广州");
+            var li = document.createElement("li");
+            li.appendChild(gzText);
+            city.insertBefore(li,bj);
+        });
+
+        //使用广州节点替换#bj节点
+        myclick("btn03",function(){
+            var bj = document.getElementById("bj");
+            var gzText =document.createTextNode("广州");
+            var li = document.createElement("li");
+            li.appendChild(gzText);
+            //city.insertBefore(li,bj);
+            city.replaceChild(li,bj);
+        })
+
+        //删除bj节点
+        myclick("btn04",function(){
+            var bj = document.getElementById("bj");
+            //city.removeChild(bj);
+            bj.parentNode.removeChild(bj);
+        })
+
+        //读取#city内的HTML代码
+        myclick("btn05",function(){
+            alert(city.innerHTML);
+        })
+        //设置#bj内的HTML代码
+        myclick("btn06",function(){
+            var bj = document.getElementById("bj");
+            bj.innerHTML ="beijing";
+        })
+
+        //创建一个广州节点，加到#city下
+        myclick("btn07", function(){
+            city.innerHTML +="<li>广州</li>";
+        })
+
+
+    }
+
+</script>
+<body>
+    <div>
+        <ul id="city">
+            <li id="bj">北京</li>
+            <li>上海</li>
+            <li>东京</li>
+            <li>首尔</li>
+        </ul>
+    </div>
+    <div id="btnlist">
+        <div><button id="btn01">创建一个广州节点，加到#city下</button></div>
+        <div><button id="btn02">将广州节点插入#bj前面</button></div>
+        <div><button id="btn03">使用广州节点替换#bj节点</button></div>
+        <div><button id="btn04">删除bj节点</button></div>
+        <div><button id="btn05">读取#city内的HTML代码</button></div>
+        <div><button id="btn06">设置#bj内的HTML代码</button></div>
+        <div><button id="btn07">创建一个广州节点，加到#city下</button></div>
+    </div>
+
+</body>
+</html>

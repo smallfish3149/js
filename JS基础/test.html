@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script src="test.js"></script>
+   <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <!-- <button id="btn" onclick="alert('hhh!')">你好！</button> -->
+    <button id="btn">你好！</button>
+    <script>
+/*         var btn = document.getElementById("btn");
+        btn.innerHTML = "先生，您好！";
+        btn.onclick = function (){
+            alert("ggg");
+        } */
+        window.onload =function(){
+            
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function (){
+                var bj = document.getElementById("bj");
+                alert(bj.innerHTML);
+            }
+
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function (){
+                var type = document.getElementsByTagName("li");
+                for(var i=0;i<type.length;i++){
+                    alert(type[i].innerHTML);
+                }
+
+            }
+        }
+    </script>
+    <div id="total">
+            <div id="inner">
+                <p>你喜欢哪个城市</p>
+                <li id="bj">北京</li>
+                <ul id="city">
+                    <li>上海</li>
+                    <li>东京</li>
+                    <li>首尔</li>
+                </ul>
+                <br>
+                <br>
+                <p>你喜欢哪个游戏？</p>
+                <ul id="game">
+                    <li id="wzry">王者荣耀</li>
+                    <li>QQ飞车</li>
+                    <li>和平精英</li>
+                    <li>LOL</li>
+                </ul>
+                <br>
+                <br>
+                <p>你电脑的操作系统是？</p>
+                <ul id="pcsystem">
+                    <li id="linux">linux</li>
+                    <li>IOS</li>
+                    <li>Windows 10</li>
+                </ul>
+            </div>
+            <div id="btnList">
+                    <div><button id="btn01">查找#bj节点</button></div>
+                    <div><button id="btn02">查找li节点</button></div>
+            </div>
+        </div>
+        <div class="box">
+            <div>hhhh</div>
+          </div>
+</body>
+</html>

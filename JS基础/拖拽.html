@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box{
+        width: 300px;
+        height: 300px;
+        background-color: aquamarine;
+        position: absolute;
+    }
+</style>
+<script>
+    window.onload = function(){
+        var box =document.getElementById("box");
+        box.onmousedown = function(event){
+                    event = event || window.event;
+                    var ol = event.clientX - box.offsetLeft;
+                    var ot = event.clientY - box.offsetTop;
+            document.onmousemove = function(event){
+                    event = event || window.event;
+                    var x = event.clientX - ol;
+                    var y = event.clientY - ot;
+
+                    box.style.left = x+"px";
+                    box.style.top = y+"px";
+                }
+                
+                document.onmouseup = function(){
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+
+                }
+                return false;
+        }
+    }
+</script>
+<body>
+    <div id="box"></div>
+</body>
+</html>
